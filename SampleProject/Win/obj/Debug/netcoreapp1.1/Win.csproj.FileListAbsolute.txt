@@ -1,0 +1,9 @@
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\bin\Debug\netcoreapp1.1\Win.deps.json
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\bin\Debug\netcoreapp1.1\Win.runtimeconfig.json
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\bin\Debug\netcoreapp1.1\Win.runtimeconfig.dev.json
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\bin\Debug\netcoreapp1.1\Win.dll
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\bin\Debug\netcoreapp1.1\Win.pdb
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\obj\Debug\netcoreapp1.1\Win.csprojResolveAssemblyReference.cache
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\obj\Debug\netcoreapp1.1\Win.AssemblyInfo.cs
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\obj\Debug\netcoreapp1.1\Win.dll
+C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\Win\obj\Debug\netcoreapp1.1\Win.pdb
