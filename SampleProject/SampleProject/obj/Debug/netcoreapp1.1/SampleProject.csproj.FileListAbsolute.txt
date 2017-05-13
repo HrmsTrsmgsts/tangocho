@@ -1,9 +1,0 @@
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\bin\Debug\netcoreapp1.1\SampleProject.deps.json
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\bin\Debug\netcoreapp1.1\SampleProject.runtimeconfig.json
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\bin\Debug\netcoreapp1.1\SampleProject.runtimeconfig.dev.json
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\bin\Debug\netcoreapp1.1\SampleProject.dll
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\obj\Debug\netcoreapp1.1\SampleProject.AssemblyInfo.cs
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\bin\Debug\netcoreapp1.1\SampleProject.pdb
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\obj\Debug\netcoreapp1.1\SampleProject.dll
-C:\Users\nitta\Documents\GitHub\tangocho\SampleProject\SampleProject\obj\Debug\netcoreapp1.1\SampleProject.pdb

@@ -1,0 +1,9 @@
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\bin\Debug\netcoreapp1.1\TwitterAuthentication.deps.json
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\bin\Debug\netcoreapp1.1\TwitterAuthentication.runtimeconfig.json
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\bin\Debug\netcoreapp1.1\TwitterAuthentication.runtimeconfig.dev.json
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\bin\Debug\netcoreapp1.1\TwitterAuthentication.dll
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\bin\Debug\netcoreapp1.1\TwitterAuthentication.pdb
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\obj\Debug\netcoreapp1.1\TwitterAuthentication.csprojResolveAssemblyReference.cache
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\obj\Debug\netcoreapp1.1\TwitterAuthentication.AssemblyInfo.cs
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\obj\Debug\netcoreapp1.1\TwitterAuthentication.dll
+C:\Users\光宏\Documents\GitHub\tangocho\SampleProject\TwitterAuthentication\obj\Debug\netcoreapp1.1\TwitterAuthentication.pdb
