@@ -1,0 +1,28 @@
+﻿@using Marimo.Tangocho.ViewModels;
+@model PracticePageViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>@Model.QuestionWord.Word</h1>の意味は？
+        @foreach (var item in Model.Answers)
+        {
+        @using (Html.BeginForm("Answer", "Practice", FormMethod.Post))
+        {
+        <input type="hidden" name="questionWord" value="@Model.QuestionWord.Word" />
+        <input type="hidden" name="answerWord" value="@item.Word" />
+        <button class="btn-primary btn-answer text-left col-lg-12">
+            @item.Meaning
+        </button>
+        }
+        }
+        <h1 class="text-right">@Model.RestQuestionsCount / @Model.TotalCount</h1>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>
