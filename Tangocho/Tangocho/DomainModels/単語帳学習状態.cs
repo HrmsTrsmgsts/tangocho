@@ -5,20 +5,13 @@ using System.Threading.Tasks;
 
 namespace Marimo.Tangocho.DomainModels
 {
-    public class Item
-    {
-        public bool Learned { get; set; } = false;
-        public string Word { get; set; }
-        public string Meaning { get; set; }
-    }
-
     public class 単語帳学習状態
     {
-        public IEnumerable<Item> RestQuestions =>
-            from item in Questions
-            where !item.Learned
+        public IEnumerable<問題> RestQuestions =>
+            from item in 問題
+            where !item.正解済み
             select item;
 
-        public IEnumerable<Item> Questions { get; set; } = new Item[] { };
+        public IEnumerable<問題> 問題 { get; set; } = new 問題[] { };
     }
 }

@@ -22,12 +22,12 @@ namespace Marimo.Tangocho.Controllers
             var s = HttpContext.Session.GetString("ホーム");
             if (s != null)
             {
-                if (string.IsNullOrEmpty(model.Sentence))
+                if (string.IsNullOrEmpty(model.英文))
                 {
-                    model.Sentence = JsonConvert.DeserializeObject<ホームViewModel>(s).Sentence;
+                    model.英文 = JsonConvert.DeserializeObject<ホームViewModel>(s).英文;
                 }
 
-                model.Tangocho = JsonConvert.DeserializeObject<ホームViewModel>(s).Tangocho;
+                model.単語帳 = JsonConvert.DeserializeObject<ホームViewModel>(s).単語帳;
             }
             return View(model);
         }
@@ -44,16 +44,16 @@ namespace Marimo.Tangocho.Controllers
             var s = HttpContext.Session.GetString("ホーム");
             if (s != null)
             {
-                if (string.IsNullOrEmpty(model.Sentence))
+                if (string.IsNullOrEmpty(model.英文))
                 {
-                    model.Sentence = JsonConvert.DeserializeObject<ホームViewModel>(s).Sentence;
+                    model.英文 = JsonConvert.DeserializeObject<ホームViewModel>(s).英文;
                 }
 
-                model.Tangocho = JsonConvert.DeserializeObject<ホームViewModel>(s).Tangocho;
+                model.単語帳 = JsonConvert.DeserializeObject<ホームViewModel>(s).単語帳;
             }
-            model.Tangocho =
-                (from item in model.Tangocho
-                where item.Word != word
+            model.単語帳 =
+                (from item in model.単語帳
+                where item.単語 != word
                  select item
                  ).ToArray();
             HttpContext.Session.SetString("ホーム", JsonConvert.SerializeObject(model));
@@ -71,9 +71,9 @@ namespace Marimo.Tangocho.Controllers
             var practiceState =
                 new 単語帳学習状態
                 {
-                    Questions =
-                        from item in JsonConvert.DeserializeObject<ホームViewModel>(s).Tangocho
-                        select new DomainModels.Item { Learned = false, Word = item.Word, Meaning = item.Meaning }
+                    問題 =
+                        from item in JsonConvert.DeserializeObject<ホームViewModel>(s).単語帳
+                        select new DomainModels.問題 { 正解済み = false, 単語 = item.単語, 意味 = item.意味 }
                 };
                 
 

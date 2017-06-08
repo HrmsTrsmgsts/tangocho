@@ -8,19 +8,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>@Model.QuestionWord.Word</h1>の意味は？
-        @foreach (var item in Model.Answers)
+        <h1>@Model.出題された問題.単語</h1>の意味は？
+        @foreach (var item in Model.選択肢)
         {
         @using (Html.BeginForm("答える", "単語帳学習", FormMethod.Post))
         {
-        <input type="hidden" name="questionWord" value="@Model.QuestionWord.Word" />
-        <input type="hidden" name="answerWord" value="@item.Word" />
+        <input type="hidden" name="questionWord" value="@Model.出題された問題.単語" />
+        <input type="hidden" name="answerWord" value="@item.単語" />
         <button class="btn-primary btn-answer text-left col-lg-12">
-            @item.Meaning
+            @item.意味
         </button>
         }
         }
-        <h1 class="text-right">@Model.RestQuestionsCount / @Model.TotalCount</h1>
+        <h1 class="text-right">@Model.残った問題数 / @Model.問題の総数</h1>
     </div>
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

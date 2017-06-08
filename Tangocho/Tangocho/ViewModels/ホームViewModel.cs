@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace Marimo.Tangocho.ViewModels
 {
-    public class Item
+    public class 辞書項目
     {
-        public string Word { get; set; }
-        public string Meaning { get; set; }
+        public string 単語 { get; set; }
+        public string 意味 { get; set; }
     }
     public class ホームViewModel
     {
-        public string Sentence { get; set; }
+        public string 英文 { get; set; }
 
-        public string DeletedWord { get; set; }
+        public string 削除される問題 { get; set; }
 
-        public IEnumerable<Item> Tangocho { get; set; } = new Item[] { };
+        public IEnumerable<辞書項目> 単語帳 { get; set; } = new 辞書項目[] { };
     }
 }

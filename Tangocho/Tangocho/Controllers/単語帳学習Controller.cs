@@ -17,28 +17,28 @@ namespace Marimo.Tangocho.Controllers
             var s = HttpContext.Session.GetString("単語帳学習");
             var state = JsonConvert.DeserializeObject<単語帳学習状態>(s);
 
-            model.QuestionWord =
+            model.出題された問題 =
                 (from item in state.RestQuestions
                  let guid = Guid.NewGuid()
                  orderby guid
                  select item
                 ).First();
 
-            model.Answers =
+            model.選択肢 =
                 from item in
                     (from item in state.RestQuestions
-                     where item != model.QuestionWord
+                     where item != model.出題された問題
                      let guid = Guid.NewGuid()
                      orderby guid
                      select item
                     ).Take(4)
-                    .Concat(new[] { model.QuestionWord })
+                    .Concat(new[] { model.出題された問題 })
                 let guid = Guid.NewGuid()
                 orderby guid
                 select item;
 
-            model.TotalCount = state.Questions.Count();
-            model.RestQuestionsCount = state.RestQuestions.Count();
+            model.問題の総数 = state.問題.Count();
+            model.残った問題数 = state.RestQuestions.Count();
 
             return View(model);
         }
@@ -50,10 +50,10 @@ namespace Marimo.Tangocho.Controllers
 
             if(questionWord == answerWord)
             {
-                (from item in state.Questions
-                 where item.Word == questionWord
+                (from item in state.問題
+                 where item.単語 == questionWord
                  select item
-                 ).Single().Learned = true;
+                 ).Single().正解済み = true;
             }
 
             if(state.RestQuestions.IsEmpty())
@@ -63,28 +63,28 @@ namespace Marimo.Tangocho.Controllers
 
             HttpContext.Session.SetString("単語帳学習", JsonConvert.SerializeObject(state));
 
-            model.QuestionWord =
+            model.出題された問題 =
                 (from item in state.RestQuestions
                  let guid = Guid.NewGuid()
                  orderby guid
                  select item
                 ).First();
 
-            model.Answers =
+            model.選択肢 =
                 from item in
                     (from item in state.RestQuestions
-                     where item != model.QuestionWord
+                     where item != model.出題された問題
                      let guid = Guid.NewGuid()
                      orderby guid
                      select item
                     ).Take(4)
-                    .Concat(new[] { model.QuestionWord })
+                    .Concat(new[] { model.出題された問題 })
                 let guid = Guid.NewGuid()
                 orderby guid
                 select item;
 
-            model.TotalCount = state.Questions.Count();
-            model.RestQuestionsCount = state.RestQuestions.Count();
+            model.問題の総数 = state.問題.Count();
+            model.残った問題数 = state.RestQuestions.Count();
 
             return View("索引", model);
         }

@@ -11,11 +11,11 @@
         @using (Html.BeginForm("辞書を引く", "ホーム", FormMethod.Post))
         {
             @Html.Label("英文を入力してください。")
-        @Html.TextAreaFor(m => m.Sentence, new { @class = "col-xs-12 input-lg" })
+        @Html.TextAreaFor(m => m.英文, new { @class = "col-xs-12 input-lg" })
         <input class="col-xs-1 col-xs-offset-11 btn-default" type="submit" value="辞書を引く" />
         }
     </div>
-    @if (Model.Tangocho.Any())
+    @if (Model.単語帳.Any())
     {
     <div class="container">
         <table class="table table-striped col-xs-12">
@@ -27,18 +27,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Tangocho)
+                @foreach (var 項目 in Model.単語帳)
                 {
                 <tr>
                     <td>
                         @using (Html.BeginForm("削除する", "ホーム", FormMethod.Post))
                         {
-                        <input type="hidden" name="word" value="@item.Word" />
+                        <input type="hidden" name="word" value="@項目.単語" />
                         <button class="btn-default" type="submit"><span class="glyphicon glyphicon-trash" /></button>
                         }
                     </td>
-                    <td class="text-center">@item.Word</td>
-                    <td>@item.Meaning</td>
+                    <td class="text-center">@項目.単語</td>
+                    <td>@項目.意味</td>
                 </tr>
                 }
             </tbody>
