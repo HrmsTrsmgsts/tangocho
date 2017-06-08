@@ -55,7 +55,7 @@ namespace Marimo.Tangocho
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=ホーム}/{action=索引}/{id?}");
             });
         }
     }

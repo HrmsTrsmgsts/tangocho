@@ -1,0 +1,9 @@
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\bin\Release\netcoreapp1.1\Marimo.Tangocho.deps.json
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\bin\Release\netcoreapp1.1\Marimo.Tangocho.runtimeconfig.json
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\bin\Release\netcoreapp1.1\Marimo.Tangocho.runtimeconfig.dev.json
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\bin\Release\netcoreapp1.1\Marimo.Tangocho.dll
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\bin\Release\netcoreapp1.1\Marimo.Tangocho.pdb
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\obj\Release\netcoreapp1.1\Tangocho.csprojResolveAssemblyReference.cache
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\obj\Release\netcoreapp1.1\Tangocho.AssemblyInfo.cs
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\obj\Release\netcoreapp1.1\Marimo.Tangocho.dll
+C:\Users\nitta\Documents\GitHub\tangocho\Tangocho\Tangocho\obj\Release\netcoreapp1.1\Marimo.Tangocho.pdb
