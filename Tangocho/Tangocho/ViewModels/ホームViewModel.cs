@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Marimo.Tangocho.InputModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Marimo.Tangocho.ViewModels
     }
     public class ホームViewModel
     {
-        public string 英文 { get; set; }
+        public ホームInputModel 入力 { get; set; } = new ホームInputModel();
 
         public string 削除される問題 { get; set; }
 

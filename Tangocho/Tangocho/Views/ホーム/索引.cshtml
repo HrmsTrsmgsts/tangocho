@@ -11,7 +11,7 @@
         @using (Html.BeginForm("辞書を引く", "ホーム", FormMethod.Post))
         {
             @Html.Label("英文を入力してください。")
-        @Html.TextAreaFor(m => m.英文, new { @class = "col-xs-12 input-lg" })
+        @Html.TextAreaFor(m => m.入力.英文, new { @class = "col-xs-12 input-lg" })
         <input class="col-xs-1 col-xs-offset-11 btn-default" type="submit" value="辞書を引く" />
         }
     </div>
