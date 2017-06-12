@@ -1,4 +1,6 @@
-﻿using Marimo.Tangocho.DomainModels;
+﻿using Marimo.Tangocho.Commons;
+using Marimo.Tangocho.DomainModels;
+using Marimo.Tangocho.InputModels;
 using Marimo.Tangocho.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,83 +12,84 @@ using System.Threading.Tasks;
 
 namespace Marimo.Tangocho.Controllers
 {
-    public class 単語帳学習Controller : Controller
+    public class 単語帳学習Controller : Controller<単語帳学習ViewModel, 単語帳学習InputModel>
     {
-        public IActionResult 索引(単語帳学習ViewModel model)
+        public IActionResult 索引(単語帳学習InputModel 入力)
         {
-            var s = HttpContext.Session.GetString("単語帳学習");
-            var state = JsonConvert.DeserializeObject<単語帳学習状態>(s);
+            var モデル = Getモデル(入力);
+            var 回答状態 = Getセッション<単語帳学習状態>();
 
-            model.出題された問題 =
-                (from item in state.RestQuestions
+            モデル.出題された問題 =
+                (from item in 回答状態.残りの問題
                  let guid = Guid.NewGuid()
                  orderby guid
                  select item
                 ).First();
 
-            model.選択肢 =
+            モデル.選択肢 =
                 from item in
-                    (from item in state.RestQuestions
-                     where item != model.出題された問題
+                    (from item in 回答状態.残りの問題
+                     where item != モデル.出題された問題
                      let guid = Guid.NewGuid()
                      orderby guid
                      select item
                     ).Take(4)
-                    .Concat(new[] { model.出題された問題 })
+                    .Concat(new[] { モデル.出題された問題 })
                 let guid = Guid.NewGuid()
                 orderby guid
                 select item;
 
-            model.問題の総数 = state.問題.Count();
-            model.残った問題数 = state.RestQuestions.Count();
+            モデル.問題の総数 = 回答状態.問題.Count();
+            モデル.残った問題数 = 回答状態.残りの問題.Count();
 
-            return View(model);
+            return View(モデル);
         }
 
-        public IActionResult 答える(単語帳学習ViewModel model, string questionWord, string answerWord)
+        public IActionResult 答える(単語帳学習InputModel 入力)
         {
-            var s = HttpContext.Session.GetString("単語帳学習");
-            var state = JsonConvert.DeserializeObject<単語帳学習状態>(s);
+            var 回答状態 = Getセッション<単語帳学習状態>();
 
-            if(questionWord == answerWord)
+            if (入力.問題の単語 == 入力.答えに対応する単語)
             {
-                (from item in state.問題
-                 where item.単語 == questionWord
+                (from item in 回答状態.問題
+                 where item.単語 == 入力.問題の単語
                  select item
                  ).Single().正解済み = true;
             }
 
-            if(state.RestQuestions.IsEmpty())
+            if(回答状態.残りの問題.IsEmpty())
             {
                 return RedirectToAction("索引", "ホーム");
             }
 
-            HttpContext.Session.SetString("単語帳学習", JsonConvert.SerializeObject(state));
+            Setセッション(回答状態);
 
-            model.出題された問題 =
-                (from item in state.RestQuestions
+            var モデル = Getモデル(入力);
+
+            モデル.出題された問題 =
+                (from item in 回答状態.残りの問題
                  let guid = Guid.NewGuid()
                  orderby guid
                  select item
                 ).First();
 
-            model.選択肢 =
+            モデル.選択肢 =
                 from item in
-                    (from item in state.RestQuestions
-                     where item != model.出題された問題
+                    (from item in 回答状態.残りの問題
+                     where item != モデル.出題された問題
                      let guid = Guid.NewGuid()
                      orderby guid
                      select item
                     ).Take(4)
-                    .Concat(new[] { model.出題された問題 })
+                    .Concat(new[] { モデル.出題された問題 })
                 let guid = Guid.NewGuid()
                 orderby guid
                 select item;
 
-            model.問題の総数 = state.問題.Count();
-            model.残った問題数 = state.RestQuestions.Count();
+            モデル.問題の総数 = 回答状態.問題.Count();
+            モデル.残った問題数 = 回答状態.残りの問題.Count();
 
-            return View("索引", model);
+            return View("索引", モデル);
         }
     }
 }

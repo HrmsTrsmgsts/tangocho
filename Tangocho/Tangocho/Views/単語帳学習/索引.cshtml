@@ -13,8 +13,8 @@
         {
         @using (Html.BeginForm("答える", "単語帳学習", FormMethod.Post))
         {
-        <input type="hidden" name="questionWord" value="@Model.出題された問題.単語" />
-        <input type="hidden" name="answerWord" value="@item.単語" />
+        <input type="hidden" name="問題の単語" value="@Model.出題された問題.単語" />
+        <input type="hidden" name="答えに対応する単語" value="@item.単語" />
         <button class="btn-primary btn-answer text-left col-lg-12">
             @item.意味
         </button>

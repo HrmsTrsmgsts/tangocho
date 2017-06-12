@@ -33,7 +33,7 @@
                     <td>
                         @using (Html.BeginForm("削除する", "ホーム", FormMethod.Post))
                         {
-                        <input type="hidden" name="word" value="@項目.単語" />
+                        <input type="hidden" name="削除される単語" value="@項目.単語" />
                         <button class="btn-default" type="submit"><span class="glyphicon glyphicon-trash" /></button>
                         }
                     </td>

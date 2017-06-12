@@ -11,83 +11,58 @@ using Marimo.Tangocho.Services;
 using Newtonsoft.Json;
 using Marimo.Tangocho.DomainModels;
 using Marimo.Tangocho.InputModels;
+using Marimo.Tangocho.Commons;
 
 namespace Marimo.Tangocho.Controllers
 {
-    public class ホームController : Controller
+    public class ホームController : Controller<ホームViewModel, ホームInputModel>
     {
         ホームService service = new ホームService();
 
         public IActionResult 索引(ホームInputModel 入力)
         {
-            var sessionString = HttpContext.Session.GetString("ホーム");
-            var モデル = new ホームViewModel();
-            if (sessionString != null)
-            {
-                if (string.IsNullOrEmpty(入力.英文))
-                {
-                    モデル.入力.英文 = JsonConvert.DeserializeObject<ホームViewModel>(sessionString).入力.英文;
-                }
-
-                モデル.単語帳 = JsonConvert.DeserializeObject<ホームViewModel>(sessionString).単語帳;
-            }
+            var モデル = Getモデル(入力);
+            Setセッション(モデル);
             return View(モデル);
         }
 
         public IActionResult 辞書を引く(ホームInputModel 入力)
         {
-            var モデル = service.Translate(入力);
-            HttpContext.Session.SetString("ホーム", JsonConvert.SerializeObject(モデル));
+            var モデル = service.辞書を引く(Getモデル(入力));
+            Setセッション(モデル);
             return View("索引", モデル);
         }
 
-        public IActionResult 削除する(ホームInputModel 入力, string word)
+        public IActionResult 削除する(ホームInputModel 入力)
         {
-            var s = HttpContext.Session.GetString("ホーム");
-            var モデル = new ホームViewModel();
-            if (s != null)
-            {
-                if (string.IsNullOrEmpty(入力.英文))
-                {
-                    入力.英文 = JsonConvert.DeserializeObject<ホームViewModel>(s).入力.英文;
-                }
-
-                モデル.単語帳 = JsonConvert.DeserializeObject<ホームViewModel>(s).単語帳;
-            }
+            var モデル = Getモデル(入力);
+            モデル.入力 = 入力;
             モデル.単語帳 =
                 (from item in モデル.単語帳
-                where item.単語 != word
+                where item.単語 != 入力.削除される単語
                  select item
                  ).ToArray();
-            HttpContext.Session.SetString("ホーム", JsonConvert.SerializeObject(モデル));
+            Setセッション(モデル);
             return View("索引", モデル);
         }
 
         public IActionResult 単語帳学習を始める()
         {
-            var s = HttpContext.Session.GetString("ホーム");
-            if(s == null)
+            var モデル = Getセッション<ホームViewModel>();
+            if(モデル == null)
             {
                 return View();
             }
 
-            var practiceState =
+            Setセッション(
                 new 単語帳学習状態
                 {
                     問題 =
-                        from item in JsonConvert.DeserializeObject<ホームViewModel>(s).単語帳
-                        select new DomainModels.問題 { 正解済み = false, 単語 = item.単語, 意味 = item.意味 }
-                };
-                
-
-            HttpContext.Session.SetString("単語帳学習", JsonConvert.SerializeObject(practiceState));
+                            from item in モデル.単語帳
+                            select new 問題 { 正解済み = false, 単語 = item.単語, 意味 = item.意味 }
+                });
 
             return RedirectToAction("索引", "単語帳学習");
-        }
-
-        public IActionResult Error()
-        {
-            return View();
         }
     }
 }
